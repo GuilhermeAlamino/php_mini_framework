@@ -11,7 +11,7 @@ Exemplo de como você pode definir rotas:
 ```php
 
 Route::get('user', 'UserController', 'index', [Guest::class]);
-Route::get('user/edit/{id}', 'UserController', 'show', [Guest::class]);
+Route::get('user/show/{id}', 'UserController', 'show', [Guest::class]);
 Route::get('user/edit/{id}', 'UserController', 'edit', [Guest::class]);
 Route::put('user/edit/{id}', 'UserController', 'update', [Guest::class]);
 Route::delete('user/delete/{id}', 'UserController', 'delete', [Guest::class]);
