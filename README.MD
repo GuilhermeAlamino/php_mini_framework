@@ -1,6 +1,6 @@
 # Estrutura PHP Mini Framework
 
-Desenvolvi está estrutura pra usar em projetos simples, existe algumas versões de melhorada pra ele mas possui Padrão MVC para a construção de aplicações web.
+Desenvolvi está estrutura pra usar em projetos simples, existe algumas versões melhorada pra ele mas possui Padrão MVC para a construção de aplicações web.
 
 ## Características
 
