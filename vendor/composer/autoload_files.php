@@ -6,6 +6,5 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
-    '1d339b530b95437a9ba7799409c6a5b1' => $baseDir . '/app/Helper.php',
-    'e4e94cda5c27c8a507e1778d59d8eed1' => $baseDir . '/app/FlashMessage.php',
+    'e83b0369fad658495636a76d7742a9f1' => $baseDir . '/app/Helper.php',
 );

@@ -1,6 +1,6 @@
 <?php return array(
     'root' => array(
-        'name' => 'php-mini-framework-php/php-mini-framework-php',
+        'name' => 'php-mini-framework/php-mini-framework',
         'pretty_version' => '0.1.0',
         'version' => '0.1.0.0',
         'reference' => NULL,
@@ -10,7 +10,7 @@
         'dev' => true,
     ),
     'versions' => array(
-        'php-mini-framework-php/php-mini-framework-php' => array(
+        'php-mini-framework/php-mini-framework' => array(
             'pretty_version' => '0.1.0',
             'version' => '0.1.0.0',
             'reference' => NULL,
