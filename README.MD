@@ -114,6 +114,40 @@ class UserController
 
 ```
 
+## 5. Database
+
+Crie um banco de dados e passe as configurações aqui app/Config/Database:
+
+```php
+
+private $host = 'localhost';
+private $db_name = 'logsmart';
+private $username = 'root';
+private $password = '';
+
+```
+
+## 6. Arquivo na raiz do projeto script.db
+
+Executar SQL DDL:
+
+```php
+
+CREATE DATABASE IF NOT EXISTS logsmart CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE logsmart;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED AUTO_INCREMENT NOT NULL COMMENT 'Identificador da tabela de usuários',
+    name VARCHAR(255) NOT NULL COMMENT 'Nome do usuário',
+    email VARCHAR(255) NOT NULL UNIQUE COMMENT 'Endereço de email do usuário (único)',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Data em que o usuário foi criado no banco, default de acordo com o date do database no servidor',
+    updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'Data em que o usuário foi alterado',
+    deleted_at DATETIME COMMENT 'Coluna criada para tratar soft delete. Data em que o usuário foi "removido" da base',
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
+
+```
+
 ## Próximos Passos (melhorias/alternativas)
 
 - Funcionalidade de Busca de pessoas -> Se tiver dados extremamente grandes, a filtragem no lado do cliente pode consumir muito recursos do navegador e não existe uma lógica de filtragem e a exibição dos dados, entretanto pensei em desempenho inicial e redução do tráfego de rede.
@@ -130,6 +164,7 @@ class UserController
 
 - PHP ^7.4
 - Composer
+- Mysql
 
 ## Recursos
 
@@ -139,6 +174,7 @@ class UserController
 - Axios;
 - PSR-4;
 - Bootstrap;
+- SQL
 
 ## Instalar Projeto e Dependências
 
