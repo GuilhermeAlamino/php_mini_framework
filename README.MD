@@ -1,6 +1,6 @@
 # Estrutura PHP Mini Framework
 
-Desenvolvi está estrutura pra usar em projetos simples, existe algumas versões de melhorada pra ele mas possui Padrão MVC para a construção de aplicações web.
+Desenvolvi está estrutura pra usar em projetos simples, existe algumas versões melhorada pra ele mas possui Padrão MVC para a construção de aplicações web.
 
 ## Características
 
@@ -11,7 +11,7 @@ Exemplo de como você pode definir rotas:
 ```php
 
 Route::get('user', 'UserController', 'index', [Guest::class]);
-Route::get('user/edit/{id}', 'UserController', 'show', [Guest::class]);
+Route::get('user/show/{id}', 'UserController', 'show', [Guest::class]);
 Route::get('user/edit/{id}', 'UserController', 'edit', [Guest::class]);
 Route::put('user/edit/{id}', 'UserController', 'update', [Guest::class]);
 Route::delete('user/delete/{id}', 'UserController', 'delete', [Guest::class]);
@@ -144,9 +144,9 @@ class UserController
 
 ```sh
 
-git clone https://github.com/GuilhermeAlamino/logsmart.git
+git clone https://github.com/GuilhermeAlamino/php_mini_framework.git
 
-cd logsmart
+cd php_mini_framework
 
 composer install
 
