@@ -1,0 +1,20 @@
+{
+    "name": "php-mini-framework/php-mini-framework",
+    "version": "0.1.0",
+    "description": "PHP Mini Framework leve com um sistema de roteamento e padrão MVC.",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        },
+        "files": [
+            "app/Helper.php"
+        ]
+    },
+    "authors": [
+        {
+            "name": "GuilhermeAlamino",
+            "email": "guilhermedevelopedweb@hotmail.com"
+        }
+    ],
+    "require": {}
+}

@@ -1,0 +1,104 @@
+#!/usr/bin/env php
+<?php
+
+// Verifica se há argumentos suficientes
+if ($argc < 2) {
+    die("Comando inválido, leia a documentação.\n");
+}
+
+// Obtém o comando
+$command = $argv[1];
+
+if ($command === 'make:controller') {
+    // Comando para criar controller
+
+    // Obtém o nome do controller
+    $controllerPath = $argv[2] ?? '';
+
+    // Verifica se o nome do controller foi fornecido
+    if (empty($controllerPath)) {
+        die("Comando do controller não fornecido, leia a documentação.\n");
+    }
+
+    // Caminho onde deseja salvar os arquivos do controller
+    $controllerPathParts = explode('/', $controllerPath);
+    $controllerName = end($controllerPathParts);
+    array_pop($controllerPathParts); // Remove o último elemento (o nome do controller)
+
+    // Cria o caminho completo para a pasta do controller
+    $controllerSubpath = implode('/', $controllerPathParts);
+    $controllerFullPath = __DIR__ . '/app/Controllers/' . $controllerSubpath;
+
+    // Garante que a pasta exista, se não, cria
+    if (!is_dir($controllerFullPath)) {
+        mkdir($controllerFullPath, 0755, true);
+    }
+
+    // Nome do arquivo do controller
+    $controllerFilename = $controllerFullPath . '/' . $controllerName . 'Controller.php';
+
+    // Verifica se o arquivo do controller já existe
+    if (!file_exists($controllerFilename)) {
+        // Gera o código do controller
+        $controllerCode = "<?php\n\nnamespace App\Controllers" . ($controllerSubpath ? '\\' . str_replace('/', '\\', $controllerSubpath) : '') . ";\n\n";
+        $controllerCode .= "class $controllerName \n";
+        $controllerCode .= "{\n";
+        $controllerCode .= "\tpublic function index()\n\t{\n\t\t// Seu código aqui\n\t}\n";
+        $controllerCode .= "}\n";
+
+        // Cria o arquivo e escreve o conteúdo
+        file_put_contents($controllerFilename, $controllerCode);
+        echo "Controller criado com sucesso.\n";
+    } else {
+        echo "Controller já existe.\n";
+    }
+} elseif ($command === 'make:model') {
+    // Comando para criar model
+
+    // Obtém o nome do model
+    $modelName = $argv[2] ?? '';
+
+    // Verifica se o nome do model foi fornecido
+    if (empty($modelName)) {
+        die("Comando do model não fornecido, leia a documentação.\n");
+    }
+
+    // Caminho onde deseja salvar os arquivos do model
+    $modelPathParts = explode('/', $modelName);
+    $modelName = end($modelPathParts);
+    array_pop($modelPathParts); // Remove o último elemento (o nome do model)
+
+    // Cria o caminho completo para a pasta do model
+    $modelSubpath = implode('/', $modelPathParts);
+    $modelFullPath = __DIR__ . '/app/Models/' . $modelSubpath;
+
+    // Garante que a pasta exista, se não, cria
+    if (!is_dir($modelFullPath)) {
+        mkdir($modelFullPath, 0755, true);
+    }
+
+    // Nome do arquivo do model
+    $modelFilename = $modelFullPath . '/' . $modelName . '.php';
+
+    // Verifica se o arquivo do model já existe
+    if (!file_exists($modelFilename)) {
+        // Gera o código do model
+        $modelCode = "<?php\n\nnamespace App\Models" . ($modelSubpath ? '\\' . str_replace('/', '\\', $modelSubpath) : '') . ";\n\n";
+        $modelCode .= "use App\Models\Model;\n";
+        $modelCode .= "use PDO;\n\nclass $modelName extends Model\n";
+        $modelCode .= "{\n";
+        $modelCode .= "\tprivate \$table_name = \"$modelName\";\n";
+        $modelCode .= "\tpublic function all()\n\t{\n";
+        $modelCode .= "\t\t\$query = \"SELECT * FROM \" . \$this->table_name;\n";
+        $modelCode .= "\t\t\$stmt = \$this->conn->query(\$query);\n\n";
+        $modelCode .= "\t\treturn \$stmt->fetchAll(PDO::FETCH_ASSOC);\n\t}\n}";
+
+        // Cria o arquivo e escreve o conteúdo
+        file_put_contents($modelFilename, $modelCode);
+        echo "Model criado com sucesso.\n";
+    } else {
+        echo "Model já existe.\n";
+    }
+} else {
+    echo "Comando inválido.\n";
+}

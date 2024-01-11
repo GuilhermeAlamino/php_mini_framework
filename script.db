@@ -1,0 +1,12 @@
+CREATE DATABASE IF NOT EXISTS logsmart CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+USE logsmart;
+
+CREATE TABLE IF NOT EXISTS users (
+    id INT UNSIGNED AUTO_INCREMENT NOT NULL COMMENT 'Identificador da tabela de usuários',
+    name VARCHAR(255) NOT NULL COMMENT 'Nome do usuário',
+    email VARCHAR(255) NOT NULL UNIQUE COMMENT 'Endereço de email do usuário (único)',
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP COMMENT 'Data em que o usuário foi criado no banco, default de acordo com o date do database no servidor',
+    updated_at DATETIME ON UPDATE CURRENT_TIMESTAMP COMMENT 'Data em que o usuário foi alterado',
+    deleted_at DATETIME COMMENT 'Coluna criada para tratar soft delete. Data em que o usuário foi "removido" da base',
+    PRIMARY KEY (id)
+) ENGINE=INNODB;
