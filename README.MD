@@ -144,9 +144,9 @@ class UserController
 
 ```sh
 
-git clone https://github.com/GuilhermeAlamino/logsmart.git
+git clone https://github.com/GuilhermeAlamino/php_mini_framework.git
 
-cd logsmart
+cd php_mini_framework
 
 composer install
 
